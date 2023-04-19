@@ -4,9 +4,9 @@ const Rightbar = () => {
     return (
         <>
             <h1>todo list</h1>
-            <Box sx={{ width: '100%', maxWidth: 360, bgcolor: '' }}>
+            <Box sx={{ width: '100%', maxWidth: 250, bgcolor: '' }}>
                 <nav aria-label="main mailbox folders">
-                    <List sx={{ padding: "1rem" }}>
+                    <List sx={{ }}>
                         <ListItem >
                             <ListItemButton>
                                 <ListItemIcon>
