@@ -3,7 +3,8 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import Rightbar from '../comps/rightBar'
-import { Button, Card, CardActions, CardContent, Grid, Typography } from '@mui/material'
+import { Grid } from '@mui/material'
+import Card from '@/comps/card'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,35 +22,10 @@ export default function Home() {
             <Rightbar />
           </Grid>
           <Grid sm={9}>
-            <Grid container >
-              <Grid sm={6}>
-                <Card sx={{ minWidth: 250 }}>
-                  <CardContent>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                      Word of the Day
-                    </Typography>
-                    <Typography variant="h5" component="div">
-                      benevolent
-                    </Typography>
-                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                      adjective
-                    </Typography>
-                    <Typography variant="body2">
-                      well meaning and kindly.
-                      <br />
-                      {'"a benevolent smile"'}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small">Learn More</Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            </Grid>
+            <Card />
           </Grid>
         </Grid>
       </main>
     </>
   )
 }
-0
