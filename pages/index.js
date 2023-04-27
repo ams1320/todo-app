@@ -5,8 +5,12 @@ import styles from '@/styles/Home.module.css';
 import Rightbar from '../comps/rightBar';
 import { Grid } from '@mui/material';
 import Card from '@/comps/card';
-import "bootstrap/dist/css/bootstrap.min.css";
 
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> cards
 
 const inter = Inter({ subsets: ['latin'] })
 
