@@ -5,11 +5,9 @@ import styles from '@/styles/Home.module.css';
 import Rightbar from '../comps/rightBar';
 import { Grid } from '@mui/material';
 import Card from '@/comps/card';
-<<<<<<< HEAD
-=======
 import "bootstrap/dist/css/bootstrap.min.css"
+import Navbar from '@/comps/navbar';
 
->>>>>>> cards
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -23,6 +21,7 @@ export default function Home() {
         <title>todo list</title>
       </Head>
       <main className={styles.main}>
+        <Navbar />
         <Grid container>
           <Grid sm={3}>
             <Rightbar />
