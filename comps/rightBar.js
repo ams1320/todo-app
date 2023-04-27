@@ -4,7 +4,7 @@ const Rightbar = () => {
     return (
         <>
  
-            <Box sx={{ width: '100%', maxWidth: 250, bgcolor: '',paddingLeft:"2rem" }}>
+            <Box sx={{ width: '100%', maxWidth: 220, bgcolor: '',paddingLeft:"2rem" }}>
                 <nav aria-label="main mailbox folders">
                     <List sx={{ }}>
                         <ListItem >
