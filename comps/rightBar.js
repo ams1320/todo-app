@@ -3,8 +3,8 @@ import { Inbox, Drafts, Circle } from '@mui/icons-material';
 const Rightbar = () => {
     return (
         <>
-            <h1>todo list</h1>
-            <Box sx={{ width: '100%', maxWidth: 250, bgcolor: '' }}>
+ 
+            <Box sx={{ width: '100%', maxWidth: 250, bgcolor: '',paddingLeft:"2rem" }}>
                 <nav aria-label="main mailbox folders">
                     <List sx={{ }}>
                         <ListItem >
