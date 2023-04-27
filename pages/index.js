@@ -6,7 +6,7 @@ import Rightbar from '../comps/rightBar';
 import { Grid } from '@mui/material';
 import Card from '@/comps/card';
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap";
+
 
 const inter = Inter({ subsets: ['latin'] })
 
