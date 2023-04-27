@@ -7,11 +7,6 @@ import { Grid } from '@mui/material';
 import Card from '@/comps/card';
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> cards
-
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
