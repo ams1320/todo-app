@@ -14,29 +14,31 @@ const Cards = () => {
                         <Card sx={{ maxWidth: 490 }} className={Style.card}>
                             <CardContent>
                                 <Stack direction='row' justifyContent="space-between">
-                                    <Typography variant='h5' sx={{ fontWeight: "700" }}>card title</Typography>
+                                    <Typography variant='h5' sx={{ fontWeight: "700", textDecorationLine: "none" }} className='title'>card title</Typography>
                                     <Button data-bs-toggle="dropdown" aria-expanded="false"><MoreHoriz /></Button>
                                     <ul className="dropdown-menu" >
-                                        <li className="dropdown-item"><Edit fontSize='1rem'/> edit</li>
-                                        <li className="dropdown-item"><Delete fontSize='1rem'/> delete</li>
+                                        <li className="dropdown-item"><Edit fontSize='1rem' /> edit</li>
+                                        <li className="dropdown-item"><Delete fontSize='1rem' /> delete</li>
                                     </ul>
                                 </Stack>
                                 <Typography variant='p' sx={{ paddingTop: 10, fontSize: "1.1rem", fontWeight: "600" }}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto eum nisi similique provident excepturi labore a est, cum neque officia!</Typography>
                             </CardContent>
                             <CardActions sx={{ direction: "rtl" }}>
-                                <Stack direction='row-reverse' gap={26} flexItem>
-                                    <Stack direction='row'>
+                                <Stack direction='row-reverse' justifyContent="space-between">
 
-                                        {list.map((tit) => (
-                                            tit == "work" ? <Circle sx={{ color: "skyblue", fontSize: "2.5rem" }} titleAccess='work' /> :
-                                                tit == "study" ? <Circle sx={{ color: "blue", fontSize: "2.5rem" }} titleAccess='study' /> :
-                                                    tit == "family" ? <Circle sx={{ color: "wheat", fontSize: "2.5rem" }} titleAccess='family' /> :
-                                                        <Circle sx={{ color: "greenyellow", fontSize: "2.5rem" }} titleAccess='entertainment' />
-                                        ))}
+                                    {list.map((tit) => (
+                                        tit == "work" ? <Circle sx={{ color: "skyblue", fontSize: "2.5rem" }} titleAccess='work' /> :
+                                            tit == "study" ? <Circle sx={{ color: "blue", fontSize: "2.5rem" }} titleAccess='study' /> :
+                                                tit == "family" ? <Circle sx={{ color: "wheat", fontSize: "2.5rem" }} titleAccess='family' /> :
+                                                    <Circle sx={{ color: "greenyellow", fontSize: "2.5rem" }} titleAccess='entertainment' />
+                                    ))}
 
-                                    </Stack>
                                     <FormGroup >
-                                        <FormControlLabel sx={{ direction: "ltr" }} control={<Checkbox />} label="Done" />
+                                        <FormControlLabel control={<Checkbox onClick={() => {
+                                            
+                                            let tit = document.querySelector(".title")
+                                            tit.style.textDecorationLine == "line-through" ? tit.style.textDecorationLine = "none" : tit.style.textDecorationLine = "line-through"
+                                        }} />} label="Done" />
                                     </FormGroup>
                                 </Stack>
                             </CardActions>
