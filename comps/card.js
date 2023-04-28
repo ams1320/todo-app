@@ -23,19 +23,21 @@ const Cards = () => {
                                 </Stack>
                                 <Typography variant='p' sx={{ paddingTop: 10, fontSize: "1.1rem", fontWeight: "600" }}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto eum nisi similique provident excepturi labore a est, cum neque officia!</Typography>
                             </CardContent>
-                            <CardActions sx={{ direction: "rtl" }}>
-                                <Stack direction='row-reverse' justifyContent="space-between">
+                            <CardActions sx={{display:"grid"}}>
+                                <Stack direction="row" justifyContent="space-between">
+                                    <Box>
 
-                                    {list.map((tit) => (
-                                        tit == "work" ? <Circle sx={{ color: "skyblue", fontSize: "2.5rem" }} titleAccess='work' /> :
-                                            tit == "study" ? <Circle sx={{ color: "blue", fontSize: "2.5rem" }} titleAccess='study' /> :
-                                                tit == "family" ? <Circle sx={{ color: "wheat", fontSize: "2.5rem" }} titleAccess='family' /> :
-                                                    <Circle sx={{ color: "greenyellow", fontSize: "2.5rem" }} titleAccess='entertainment' />
-                                    ))}
+                                        {list.map((tit) => (
+                                            tit == "work" ? <Circle sx={{ color: "skyblue", fontSize: "2.5rem" }} titleAccess='work' /> :
+                                                tit == "study" ? <Circle sx={{ color: "blue", fontSize: "2.5rem" }} titleAccess='study' /> :
+                                                    tit == "family" ? <Circle sx={{ color: "wheat", fontSize: "2.5rem" }} titleAccess='family' /> :
+                                                        <Circle sx={{ color: "greenyellow", fontSize: "2.5rem" }} titleAccess='entertainment' />
+                                        ))}
+                                    </Box>
 
                                     <FormGroup >
                                         <FormControlLabel control={<Checkbox onClick={() => {
-                                            
+
                                             let tit = document.querySelector(".title")
                                             tit.style.textDecorationLine == "line-through" ? tit.style.textDecorationLine = "none" : tit.style.textDecorationLine = "line-through"
                                         }} />} label="Done" />
