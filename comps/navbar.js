@@ -43,9 +43,12 @@ const Navbar = () => {
             done: false,
         },
         validationSchema: validationSchema,
-        onSubmit: (values) => {
+        onSubmit: (values,actions) => {
             // alert(JSON.stringify(values, null, 2));
-            localStorage.setItem("task",[values]);
+            let todos = !localStorage.getItem('task')?[]:JSON.parse(localStorage.getItem('task'));
+            todos.push(values)
+            localStorage.setItem("task",JSON.stringify(todos));
+            actions.resetForm();
         },
     });
 
@@ -117,7 +120,7 @@ const Navbar = () => {
 
 
 
-                                <Button color="success" variant="contained" fullWidth type="submit" sx={{bottom:"0%",top:"18%",position:"static"}}>
+                                <Button  color="success" variant="contained" fullWidth type="submit" sx={{bottom:"0%",top:"12%"}}>
                                     Submit
                                 </Button>
                             </form>
