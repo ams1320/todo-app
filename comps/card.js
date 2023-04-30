@@ -12,16 +12,17 @@ const Cards = () => {
     })
 
     useEffect(() => {
-        const data= async()=>{
-            const tasks =await JSON.parse(localStorage.getItem("task"))
+        
+            const tasks = JSON.parse(localStorage.getItem("task"))
             Setstate({task:tasks})
-        }
-        data();
+       
     }, [])
 
-    const handledelete =(index)=>{
+    const handledelete =(indexTask)=>{
         let todos= JSON.parse(localStorage.getItem("task"));
-            todos.splice(index,1);
+            todos.filter((todo,index)=>{
+                index !== indexTask;
+            })
             let task= !localStorage.setItem("task",JSON.stringify(todos))?[]:localStorage.setItem("task",JSON.stringify(todos))
             Setstate({Tasks:task})
         }
@@ -42,7 +43,7 @@ const Cards = () => {
                                                 <Button data-bs-toggle="dropdown" aria-expanded="false"><MoreHoriz /></Button>
                                                 <ul className="dropdown-menu" >
                                                     <Button className="dropdown-item" ><Edit fontSize='1rem' /> edit</Button>
-                                                    <Button className="dropdown-item"  onClick={handledelete}><Delete fontSize='1rem' /> delete</Button>
+                                                    <Button className="dropdown-item"  onClick={handledelete(index)}><Delete fontSize='1rem' /> delete</Button>
                                                 </ul>
                                             </Stack>
                                             <Typography variant='p' sx={{ paddingTop: 10, fontSize: "1.1rem", fontWeight: "600" }}>{task.info}</Typography>
