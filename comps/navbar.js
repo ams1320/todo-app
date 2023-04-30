@@ -120,7 +120,7 @@ const Navbar = () => {
 
 
 
-                                <Button  color="success" variant="contained" fullWidth type="submit" sx={{bottom:"0%",top:"12%"}}>
+                                <Button onSubmit={formik.handleReset} color="success" variant="contained" fullWidth type="submit" sx={{bottom:"0%",top:"12%"}}>
                                     Submit
                                 </Button>
                             </form>
