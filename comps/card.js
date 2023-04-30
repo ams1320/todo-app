@@ -8,30 +8,41 @@ const Cards = () => {
     const list = ["work", "study", "family", "entertainment"];
 
     const [State, Setstate] = useState({
-        Tasks: []
+        task:[],
     })
 
     useEffect(() => {
-        const tasks = JSON.parse(localStorage.getItem("task"))
-        Setstate({ Tasks: tasks })
+        const data= async()=>{
+            const tasks =await JSON.parse(localStorage.getItem("task"))
+            Setstate({task:tasks})
+        }
+        data();
     }, [])
+
+    const handledelete =(index)=>{
+        let todos= JSON.parse(localStorage.getItem("task"));
+            todos.splice(index,1);
+            let task= !localStorage.setItem("task",JSON.stringify(todos))?[]:localStorage.setItem("task",JSON.stringify(todos))
+            Setstate({Tasks:task})
+        }
 
     return (
         <>
             <Box>
                 <Grid container >
-                    {!State.Tasks ? <Typography variant='h4'>nothing here</Typography> :
-                        State.Tasks.map((task) => {
+                    {!State.task ? <Typography variant='h4'>nothing here</Typography> :
+                        State.task.map((task,index) => {
+                            
                             return (
-                                <Grid sm={6} mb={1}>
+                                <Grid sm={6} mb={2}>
                                     <Card sx={{ maxWidth: 460 }} className={Style.card}>
                                         <CardContent>
                                             <Stack direction='row' justifyContent="space-between">
                                                 <Typography variant='h5' sx={{ fontWeight: "700", textDecorationLine: task.done ? "line-through" : "none" }} className='title'>{task.title}</Typography>
                                                 <Button data-bs-toggle="dropdown" aria-expanded="false"><MoreHoriz /></Button>
                                                 <ul className="dropdown-menu" >
-                                                    <li className="dropdown-item"><Edit fontSize='1rem' /> edit</li>
-                                                    <li className="dropdown-item"><Delete fontSize='1rem' /> delete</li>
+                                                    <Button className="dropdown-item" ><Edit fontSize='1rem' /> edit</Button>
+                                                    <Button className="dropdown-item"  onClick={handledelete}><Delete fontSize='1rem' /> delete</Button>
                                                 </ul>
                                             </Stack>
                                             <Typography variant='p' sx={{ paddingTop: 10, fontSize: "1.1rem", fontWeight: "600" }}>{task.info}</Typography>
@@ -69,6 +80,8 @@ const Cards = () => {
             </Box>
         </>
     )
+
+   
 
 }
 
