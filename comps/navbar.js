@@ -45,10 +45,11 @@ const Navbar = () => {
         validationSchema: validationSchema,
         onSubmit: (values,actions) => {
             // alert(JSON.stringify(values, null, 2));
-            let todos = !localStorage.getItem('task')?[]:JSON.parse(localStorage.getItem('task'));
+            let todos = !window.localStorage.getItem('task')?[]:JSON.parse(window.localStorage.getItem('task'));
             todos.push(values)
-            localStorage.setItem("task",JSON.stringify(todos));
+            window.localStorage.setItem("task",JSON.stringify(todos));
             actions.resetForm();
+            window.location = "/"
         },
     });
 
