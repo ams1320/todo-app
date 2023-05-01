@@ -21,7 +21,7 @@ const Cards = () => {
             <Box>
                 <Grid container >
                     {!State.Tasks ? <Typography variant='h4'>nothing here</Typography> :
-                        State.Tasks.map((task) => {
+                        State.Tasks.map((task,index) => {
                             return (
                                 <Grid sm={6} mb={1}>
                                     <Card sx={{ maxWidth: 460 }} className={Style.card}>
@@ -31,7 +31,14 @@ const Cards = () => {
                                                 <Button data-bs-toggle="dropdown" aria-expanded="false"><MoreHoriz /></Button>
                                                 <ul className="dropdown-menu" >
                                                     <li className="dropdown-item"><Edit fontSize='1rem' /> edit</li>
-                                                    <li className="dropdown-item"><Delete fontSize='1rem' /> delete</li>
+                                                    <li className="dropdown-item"><Button onClick={()=>{
+                                                        let todos = JSON.parse(window.localStorage.getItem("task"));
+                                                        let todo = todos.filter((todo,inde)=>{
+                                                            inde !== index;
+                                                        })
+                                                        window.localStorage.setItem('task',JSON.stringify(!todo ? [] : todo));
+                                                        window.location = "/"
+                                                    }}><Delete fontSize='1rem' /> delete</Button></li>
                                                 </ul>
                                             </Stack>
                                             <Typography variant='p' sx={{ paddingTop: 10, fontSize: "1.1rem", fontWeight: "600" }}>{task.info}</Typography>
