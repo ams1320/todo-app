@@ -14,6 +14,7 @@ const Cards = () => {
     useEffect(() => {
         const tasks = JSON.parse(localStorage.getItem("task"))
         Setstate({ Tasks: tasks })
+        
     }, [])
 
     return (
