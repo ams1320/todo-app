@@ -14,7 +14,7 @@ const Cards = () => {
     useEffect(() => {
         const tasks = JSON.parse(localStorage.getItem("task"))
         Setstate({ Tasks: tasks })
-        
+
     }, [])
 
     return (
@@ -34,9 +34,7 @@ const Cards = () => {
                                                     <li className="dropdown-item"><Edit fontSize='1rem' /> edit</li>
                                                     <li className="dropdown-item"><Button onClick={()=>{
                                                         let todos = JSON.parse(window.localStorage.getItem("task"));
-                                                        let todo = todos.filter((todo,inde)=>{
-                                                            inde !== index;
-                                                        })
+                                                        let todo = todos.splice(index,1)
                                                         window.localStorage.setItem('task',JSON.stringify(!todo ? [] : todo));
                                                         window.location = "/"
                                                     }}><Delete fontSize='1rem' /> delete</Button></li>
