@@ -3,12 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const TaskSlice =createSlice({
     name:"store",
     initialState:{
-        task :{}
+        task :[]
     },
     reducers:{
         updateBasket:(state,action)=>{
 
-            state.task.push(...state.task,action.payload)
+            state.task = [...state.task,action.payload]
             console.log(state.task)
         }
     }
