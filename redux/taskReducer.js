@@ -7,8 +7,9 @@ const TaskSlice =createSlice({
     },
     reducers:{
         updateBasket:(state,action)=>{
-            // state.push(action.payload)
-            console.log(action.payload)
+
+            state.task.push(...state.task,action.payload)
+            console.log(state.task)
         }
     }
 })
