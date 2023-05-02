@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }) {
     import("bootstrap/dist/js/bootstrap")
   },[])
   return (
-    <Provider store={store}>
+    <Provider store={store()}>
       <Component {...pageProps} />
     </Provider>
   )
