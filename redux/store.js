@@ -1,15 +1,14 @@
-import { configureStore , combineReducers} from "@reduxjs/toolkit";
+import { configureStore ,} from "@reduxjs/toolkit";
 import { createWrapper } from 'next-redux-wrapper';
 import TaskSlice from "./taskReducer";
 
-const combineReducer = combineReducers({
-    TaskSlice,
-});
 
-export const store = ()=>{
+const store = 
     configureStore({
-       reducer :combineReducer,
+       reducer :{
+        store:TaskSlice
+       },
     
     })
-}
-export const wrapper = createWrapper(store);
+
+export default store;
