@@ -34,9 +34,9 @@ const Cards = () => {
                                                     <li className="dropdown-item"><Edit fontSize='1rem' /> edit</li>
                                                     <li className="dropdown-item"><Button onClick={()=>{
                                                         let todos = JSON.parse(window.localStorage.getItem("task"));
-                                                        let todo = todos.splice(index,1)
+                                                        let todo = todos.filter((value,ind)=> ind !== index)
+                                                        Setstate({Tasks:todo})
                                                         window.localStorage.setItem('task',JSON.stringify(!todo ? [] : todo));
-                                                        window.location = "/"
                                                     }}><Delete fontSize='1rem' /> delete</Button></li>
                                                 </ul>
                                             </Stack>

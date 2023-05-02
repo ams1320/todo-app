@@ -1,6 +1,7 @@
 import { Add, HdrPlus, PlusOne } from "@mui/icons-material";
 import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Modal, Select, Stack, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import * as yup from "yup"
 
@@ -32,9 +33,10 @@ const validationSchema = yup.object({
 const Navbar = () => {
 
     const [open, setOpen] = useState(false);
+    const [List, Setlist] = useState([]);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
+    const router = useRouter();
     const formik = useFormik({
         initialValues: {
             type: "",
@@ -47,9 +49,10 @@ const Navbar = () => {
             // alert(JSON.stringify(values, null, 2));
             let todos = !window.localStorage.getItem('task')?[]:JSON.parse(window.localStorage.getItem('task'));
             todos.push(values)
-            window.localStorage.setItem("task",JSON.stringify(todos));
+            Setlist([...List,todos])
+            window.localStorage.setItem("task",JSON.stringify(List));
             actions.resetForm();
-            window.location = "/"
+            // router.refresh();
         },
     });
 
