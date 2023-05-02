@@ -14,4 +14,4 @@ const TaskSlice =createSlice({
 })
 
 export const {updateBasket} = TaskSlice.actions;
-export default TaskSlice;
+export default TaskSlice.reducer;
