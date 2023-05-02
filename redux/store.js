@@ -1,4 +1,4 @@
-import { configureStore , combineReducers, combineReducers} from "@reduxjs/toolkit";
+import { configureStore , combineReducers} from "@reduxjs/toolkit";
 import { createWrapper } from 'next-redux-wrapper';
 import TaskSlice from "./taskReducer";
 
