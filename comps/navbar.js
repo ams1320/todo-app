@@ -3,6 +3,8 @@ import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Modal, Select, St
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import {updateBasket} from "./../redux/taskReducer"
 import * as yup from "yup"
 
 const style = {
@@ -32,6 +34,8 @@ const validationSchema = yup.object({
 
 const Navbar = () => {
 
+    const dispatch = useDispatch();
+
     const [open, setOpen] = useState(false);
     const [List, Setlist] = useState([]);
     const handleOpen = () => setOpen(true);
@@ -46,7 +50,7 @@ const Navbar = () => {
         },
         validationSchema: validationSchema,
         onSubmit: (values,actions) => {
-            // alert(JSON.stringify(values, null, 2));
+            alert(JSON.stringify(values, null, 2));
             let todos = !window.localStorage.getItem('task')?[]:JSON.parse(window.localStorage.getItem('task'));
             todos.push(values)
             Setlist([...List,todos])
