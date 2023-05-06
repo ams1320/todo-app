@@ -2,27 +2,18 @@ import { Button, Card, CardActions, CardContent, Grid, Typography, Box, Stack, F
 import { MoreHoriz, Circle, Edit, Delete } from '@mui/icons-material';
 import Style from "../styles/card.module.css"
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Cards = () => {
 
-    const list = ["work", "study", "family", "entertainment"];
-
-    const [State, Setstate] = useState({
-        Tasks: []
-    })
-
-    useEffect(() => {
-        const tasks = JSON.parse(localStorage.getItem("task"))
-        Setstate({ Tasks: tasks })
-
-    }, [])
-
+    const dispatch = useDispatch();
+    const tasks = useSelector((state)=> state.store.task)
     return (
         <>
             <Box>
                 <Grid container >
-                    {!State.Tasks ? <Typography variant='h4'>nothing here</Typography> :
-                        State.Tasks.map((task,index) => {
+                    {!tasks ? <Typography variant='h4'>nothing here</Typography> :
+                        tasks.map((task,index) => {
                             return (
                                 <Grid sm={6} mb={1}>
                                     <Card sx={{ maxWidth: 460 }} className={Style.card}>
@@ -33,10 +24,10 @@ const Cards = () => {
                                                 <ul className="dropdown-menu" >
                                                     <li className="dropdown-item"><Edit fontSize='1rem' /> edit</li>
                                                     <li className="dropdown-item"><Button onClick={()=>{
-                                                        let todos = JSON.parse(window.localStorage.getItem("task"));
-                                                        let todo = todos.filter((value,ind)=> ind !== index)
-                                                        Setstate({Tasks:todo})
-                                                        window.localStorage.setItem('task',JSON.stringify(!todo ? [] : todo));
+                                                        // let todos = JSON.parse(window.localStorage.getItem("task"));
+                                                        // let todo = todos.filter((value,ind)=> ind !== index)
+                                                        // Setstate({Tasks:todo})
+                                                        // window.localStorage.setItem('task',JSON.stringify(!todo ? [] : todo));
                                                     }}><Delete fontSize='1rem' /> delete</Button></li>
                                                 </ul>
                                             </Stack>
