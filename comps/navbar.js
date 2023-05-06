@@ -41,6 +41,8 @@ const Navbar = () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const router = useRouter();
+
+
     const formik = useFormik({
         initialValues: {
             type: "",
@@ -50,13 +52,10 @@ const Navbar = () => {
         },
         validationSchema: validationSchema,
         onSubmit: (values,actions) => {
-            alert(JSON.stringify(values, null, 2));
-            let todos = !window.localStorage.getItem('task')?[]:JSON.parse(window.localStorage.getItem('task'));
-            todos.push(values)
-            Setlist([...List,todos])
-            window.localStorage.setItem("task",JSON.stringify(List));
+
+            // alert(JSON.stringify(values, null, 2));
+            dispatch(updateBasket(values))
             actions.resetForm();
-            // router.refresh();
         },
     });
 
