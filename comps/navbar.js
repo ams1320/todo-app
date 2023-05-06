@@ -2,6 +2,8 @@ import { Add, HdrPlus, PlusOne } from "@mui/icons-material";
 import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Modal, Select, Stack, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import {updateBasket} from "./../redux/taskReducer"
 import * as yup from "yup"
 
 const style = {
@@ -34,7 +36,7 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
+    const dispatch = useDispatch();
     const formik = useFormik({
         initialValues: {
             type: "",
@@ -45,11 +47,9 @@ const Navbar = () => {
         validationSchema: validationSchema,
         onSubmit: (values,actions) => {
             // alert(JSON.stringify(values, null, 2));
-            let todos = !window.localStorage.getItem('task')?[]:JSON.parse(window.localStorage.getItem('task'));
-            todos.push(values)
-            window.localStorage.setItem("task",JSON.stringify(todos));
+            dispatch(updateBasket(values))
             actions.resetForm();
-            window.location = "/"
+        
         },
     });
 
