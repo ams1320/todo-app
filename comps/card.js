@@ -16,13 +16,13 @@ const Cards = () => {
         Setstate({ Tasks: tasks })
 
     }, [])
-
+    const tasks = useSelector((state)=>state.store.task)
     return (
         <>
             <Box>
                 <Grid container >
-                    {!State.Tasks ? <Typography variant='h4'>nothing here</Typography> :
-                        State.Tasks.map((task,index) => {
+                    {!tasks ? <Typography variant='h4'>nothing here</Typography> :
+                        tasks.map((task,index) => {
                             return (
                                 <Grid sm={6} mb={1}>
                                     <Card sx={{ maxWidth: 460 }} className={Style.card}>
