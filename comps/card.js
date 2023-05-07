@@ -6,8 +6,21 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const Cards = () => {
 
+
     const dispatch = useDispatch();
     const tasks = useSelector((state)=> state.store.task)
+
+    
+
+    const [State, Setstate] = useState({
+        Tasks: []
+    })
+
+    useEffect(() => {
+        const tasks = JSON.parse(localStorage.getItem("task"))
+        Setstate({ Tasks: tasks })
+
+    }, [])
     return (
         <>
             <Box>
