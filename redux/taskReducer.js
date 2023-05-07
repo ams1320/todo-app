@@ -10,17 +10,23 @@ const TaskSlice = createSlice({
         updateBasket: (state, action) => {
 
             let todos = !window.localStorage.getItem('task') ? [] : JSON.parse(window.localStorage.getItem('task'));
-            todos.push(JSON.stringify(action.payload))
-            // localStorage.setItem("task",JSON.stringify(todos)) 
-            console.log(todos)
-            state.task = JSON.parse(localStorage.getItem("task"));
+            todos.push(action.payload)
+            localStorage.setItem("task",JSON.stringify(todos))
+            state.task = JSON.parse(localStorage.getItem('task'));
 
             console.log(state.task)
             // let todos = [...state.task,action.payload]
 
+        },
+        deleteTask:(state,action)=>{
+           let  taskIndex = action.payload;
+           let todos = !window.localStorage.getItem('task') ? [] : JSON.parse(window.localStorage.getItem('task'));
+           todos.filter((value,index )=> index !== taskIndex);
+           localStorage.setItem("task",JSON.stringify(todos));
+           state.task = JSON.parse(localStorage.getItem("task"));
         }
     }
 })
 
-export const { updateBasket } = TaskSlice.actions;
+export const { updateBasket,deleteTask } = TaskSlice.actions;
 export default TaskSlice.reducer;
