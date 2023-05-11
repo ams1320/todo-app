@@ -3,6 +3,7 @@ import { MoreHoriz, Circle, Edit, Delete } from '@mui/icons-material';
 import Style from "../styles/card.module.css"
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { deleteTask } from '@/redux/taskReducer';
 
 const Cards = () => {
 
@@ -37,10 +38,7 @@ const Cards = () => {
                                                 <ul className="dropdown-menu" >
                                                     <li className="dropdown-item"><Edit fontSize='1rem' /> edit</li>
                                                     <li className="dropdown-item"><Button onClick={()=>{
-                                                        // let todos = JSON.parse(window.localStorage.getItem("task"));
-                                                        // let todo = todos.filter((value,ind)=> ind !== index)
-                                                        // Setstate({Tasks:todo})
-                                                        // window.localStorage.setItem('task',JSON.stringify(!todo ? [] : todo));
+                                                        dispatch(deleteTask(index))
                                                     }}><Delete fontSize='1rem' /> delete</Button></li>
                                                 </ul>
                                             </Stack>

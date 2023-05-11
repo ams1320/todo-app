@@ -42,7 +42,6 @@ const Navbar = () => {
     const handleClose = () => setOpen(false);
     const router = useRouter();
 
-
     const formik = useFormik({
         initialValues: {
             type: "",

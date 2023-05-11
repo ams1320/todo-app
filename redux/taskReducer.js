@@ -19,9 +19,14 @@ const TaskSlice = createSlice({
 
         },
         deleteTask:(state,action)=>{
-           let  taskIndex = action.payload;
-           let todos = !window.localStorage.getItem('task') ? [] : JSON.parse(window.localStorage.getItem('task'));
-           todos.filter((value,index )=> index !== taskIndex);
+           const  taskIndex = action.payload;
+           const todos = state.task.filter((value,index)=> {
+            // console.log(value.title)
+            // console.log(taskIndex)
+          return  index !== taskIndex
+        });;
+           
+           console.log(todos)
            localStorage.setItem("task",JSON.stringify(todos));
            state.task = JSON.parse(localStorage.getItem("task"));
         }
