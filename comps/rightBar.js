@@ -1,5 +1,6 @@
 import { Box, Checkbox, FormControlLabel, FormGroup, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import { Inbox, Drafts, Circle } from '@mui/icons-material';
+import Link from "next/link";
 const Rightbar = () => {
     return (
         <>
@@ -8,12 +9,14 @@ const Rightbar = () => {
                 <nav aria-label="main mailbox folders">
                     <List sx={{ }}>
                         <ListItem >
+                            <Link href="/task/work">
                             <ListItemButton>
                                 <ListItemIcon>
                                     <Circle sx={{color:"skyblue"}}/>
                                 </ListItemIcon>
                                 <ListItemText primary="work" />
                             </ListItemButton>
+                            </Link>
                         </ListItem>
                         <ListItem >
                             <ListItemButton>
