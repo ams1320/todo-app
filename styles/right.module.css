@@ -1,0 +1,9 @@
+.link{
+    text-decoration: none;
+}
+
+.linkText{
+    color: black;
+    font-size: 100px !important;
+    font-weight: 700;
+}
