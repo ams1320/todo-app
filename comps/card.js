@@ -10,6 +10,7 @@ const Cards = ({ type }) => {
 
     const dispatch = useDispatch();
     const tasks = useSelector((state) => state.store.task)
+    const hideTask = useSelector((state)=> state.store.hide)
     return (
         <>
             <Box>
@@ -19,8 +20,8 @@ const Cards = ({ type }) => {
                             return (
                                 type == undefined ?
                                     (
-                                        <Grid sm={6} mb={2}>
-                                            <Card sx={{ maxWidth: 460 }} className={Style.card}>
+                                        <Grid sm={6} mb={2} sx={{display:hideTask && task.done ? "none" : "block" ,}}>
+                                            <Card sx={{ maxWidth: 460 , opacity : task.done ? .6 : 1  }} className={Style.card}>
                                                 <CardContent>
                                                     <Stack direction='row' justifyContent="space-between">
                                                         <Typography variant='h5' sx={{ fontWeight: "700", textDecorationLine: task.done ? "line-through" : "none" }} className='title'>{task.title}</Typography>
@@ -159,7 +160,7 @@ const Cards = ({ type }) => {
                                     ) :
                                     task.type == type ?
                                         (
-                                        <Grid sm={6} mb={2}>
+                                        <Grid sm={6} mb={2} sx={{display:hideTask && task.done ? "none" : "block" ,}}>
                                             <Card sx={{ maxWidth: 460 }} className={Style.card}>
                                                 <CardContent>
                                                     <Stack direction='row' justifyContent="space-between">

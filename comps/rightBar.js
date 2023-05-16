@@ -1,8 +1,12 @@
 import { Box, Checkbox, FormControlLabel, FormGroup, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import { Inbox, Drafts, Circle } from '@mui/icons-material';
 import Link from "next/link";
-import style from"@/styles/right.module.css"
+import style from"@/styles/right.module.css";
+import { hideTask } from "@/redux/taskReducer";
+import { useDispatch, useSelector } from "react-redux";
 const Rightbar = () => {
+   let hidetasks = useSelector((state)=>state.store.hide)
+   let dispatch = useDispatch();
     return (
         <>
 
@@ -50,7 +54,9 @@ const Rightbar = () => {
                             </Link>
                         </ListItem>
                         <FormGroup >
-                            <FormControlLabel sx={{ ml: 3, mt: 1 }} control={<Checkbox />} label={<Typography sx={{ fontSize: ".8rem" }}>hide done tasks</Typography>} />
+                            <FormControlLabel sx={{ ml: 3, mt: 1 }} control={<Checkbox onChange={()=>{
+                                dispatch(hideTask(!hidetasks ? true :false))
+                            }} />} label={<Typography sx={{ fontSize: ".8rem" }}>hide done tasks</Typography>} />
                         </FormGroup>
                     </List>
                 </nav>

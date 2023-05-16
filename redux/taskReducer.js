@@ -5,6 +5,7 @@ const TaskSlice = createSlice({
 
     initialState: {
         task: typeof window !== "undefined" ? JSON.parse(window.localStorage.getItem('task')) : [],
+        hide : false,
     },
     reducers: {
         updateBasket: (state, action) => {
@@ -40,9 +41,12 @@ const TaskSlice = createSlice({
             task[action.payload.index].done = action.payload.tasks;
             localStorage.setItem('task', JSON.stringify(task));
             state.task = JSON.parse(localStorage.getItem("task"));
+        },
+        hideTask:(state,action)=>{
+            state.hide = action.payload;
         }
     }
 })
 
-export const { updateBasket, deleteTask, editTask ,doneTask } = TaskSlice.actions;
+export const { updateBasket, deleteTask, editTask ,doneTask,hideTask } = TaskSlice.actions;
 export default TaskSlice.reducer;
