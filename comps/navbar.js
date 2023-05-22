@@ -60,7 +60,7 @@ const Navbar = () => {
         <>
             <Box>
                 <Stack direction='row' justifyContent="space-between" p={1} mt={1}>
-                    <Typography variant="h4" ml={5} fontWeight={700}>todo </Typography>
+                    <Link href="/" style={{textDecoration:"none",color:"black"}}><Typography variant="h4" ml={5} fontWeight={700}>todo </Typography></Link>
                     <Button><Add sx={{ fontSize: "3rem",color :"black" }} onClick={handleOpen} /></Button>
                     <Modal
                         open={open}
