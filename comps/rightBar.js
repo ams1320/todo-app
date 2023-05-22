@@ -4,22 +4,25 @@ import Link from "next/link";
 import style from"@/styles/right.module.css";
 import { hideTask } from "@/redux/taskReducer";
 import { useDispatch, useSelector } from "react-redux";
+
 const Rightbar = () => {
+
    let hidetasks = useSelector((state)=>state.store.hide)
    let dispatch = useDispatch();
+
     return (
         <>
 
-            <Box sx={{ width: '100%', maxWidth: 220, bgcolor: '', paddingLeft: "2rem" }}>
+            <Box sx={{ width: '100%', maxWidth: 220, bgcolor: '', paddingLeft: "2rem",display:{sm:"block",xs:"none"}}}>
                 <nav aria-label="main mailbox folders">
                     <List>
                         <ListItem >
                             <Link href="/task/work" className={style.link}>
-                                <ListItemButton>
+                                <ListItemButton >
                                     <ListItemIcon>
                                         <Circle sx={{ color: "skyblue" }} />
                                     </ListItemIcon>
-                                    <ListItemText className={style.linkText} primary="work" />
+                                    <ListItemText className={style.linkText}  primary="work" />
                                 </ListItemButton>
                             </Link>
                         </ListItem>
@@ -56,7 +59,7 @@ const Rightbar = () => {
                         <FormGroup >
                             <FormControlLabel sx={{ ml: 3, mt: 1 }} control={<Checkbox onChange={()=>{
                                 dispatch(hideTask(!hidetasks ? true :false))
-                            }} />} label={<Typography sx={{ fontSize: ".8rem" }}>hide done tasks</Typography>} />
+                            }} />} label={<Typography variant="h5" sx={{ fontSize: ".8rem" }}>hide done tasks</Typography>} />
                         </FormGroup>
                     </List>
                 </nav>

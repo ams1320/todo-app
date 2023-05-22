@@ -1,10 +1,35 @@
 .card{
-    background-color: #dbdbdb;
+    background-color: #b6b6b6;
     border-radius: 8px;
     box-shadow: 3px 3px 3px gray;
     padding: 0;
+    transition: all 300ms ease;
 }
 .card:hover{
-    box-shadow: 5px 5px 6px gray;
-    transition: all 500ms ease(0.42, 0, 0.58, 1);
+    box-shadow: 5px 5px 10px rgb(104, 104, 104);
+}
+
+.navbarLink:hover{
+    background-color: #e0e0e0;
+    border-radius: 12px;
+}
+
+.cardInfo{
+    padding-top: 10px; 
+    font-size: 1.1rem;
+     font-weight: 600; 
+}
+
+.cardOptionGroup{
+    box-shadow: 2px 2px 3px grey;
+     border-radius: 2px;
+      width: 500px;
+       height: 40px;
+}
+
+.cardTextfield{
+    box-shadow: 3px 3px 4px grey;
+     width: 360px; 
+     margin-left: 20px; 
+     border-radius: 5px;
 }

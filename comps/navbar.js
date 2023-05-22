@@ -1,11 +1,12 @@
-import { Add, HdrPlus, PlusOne } from "@mui/icons-material";
+import { Add, Circle, HdrPlus, PlusOne } from "@mui/icons-material";
 import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Modal, Select, Stack, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import {updateBasket} from "./../redux/taskReducer"
-import * as yup from "yup"
+import { updateBasket } from "./../redux/taskReducer";
+import Style from "../styles/card.module.css";
+import * as yup from "yup";
+import Link from "next/link";
 
 const style = {
     position: 'absolute',
@@ -37,10 +38,8 @@ const Navbar = () => {
     const dispatch = useDispatch();
 
     const [open, setOpen] = useState(false);
-    const [List, Setlist] = useState([]);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const router = useRouter();
 
     const formik = useFormik({
         initialValues: {
@@ -50,9 +49,8 @@ const Navbar = () => {
             done: false,
         },
         validationSchema: validationSchema,
-        onSubmit: (values,actions) => {
+        onSubmit: (values, actions) => {
 
-            // alert(JSON.stringify(values, null, 2));
             dispatch(updateBasket(values))
             actions.resetForm();
         },
@@ -61,9 +59,9 @@ const Navbar = () => {
     return (
         <>
             <Box>
-                <Stack direction='row' justifyContent="space-between" p={5}>
-                    <Typography variant="h4">todo list</Typography>
-                    <Button><Add sx={{ fontSize: "3rem" }} onClick={handleOpen} /></Button>
+                <Stack direction='row' justifyContent="space-between" p={1} mt={1}>
+                    <Typography variant="h4" ml={5} fontWeight={700}>todo </Typography>
+                    <Button><Add sx={{ fontSize: "3rem",color :"black" }} onClick={handleOpen} /></Button>
                     <Modal
                         open={open}
                         onClose={handleClose}
@@ -71,8 +69,8 @@ const Navbar = () => {
                         aria-describedby="modal-modal-description"
                     >
                         <Box sx={style}>
-                            <form onSubmit={formik.handleSubmit} style={{ border: "solid 1px gray", padding: 10, borderRadius: 6, height: 400,boxShadow:"4px 4px 6px gray" }}>
-                            <Typography variant="h4" mb={2}>add new task</Typography>
+                            <form onSubmit={formik.handleSubmit} style={{ border: "solid 1px gray", padding: 10, borderRadius: 6, height: 400, boxShadow: "4px 4px 6px gray" }}>
+                                <Typography variant="h4" mb={2}>add new task</Typography>
                                 <Grid container >
                                     <Grid sm={12} p={1} mb={1}>
                                         <FormControl fullWidth>
@@ -126,12 +124,32 @@ const Navbar = () => {
 
 
 
-                                <Button onSubmit={formik.handleReset} color="success" variant="contained" fullWidth type="submit" sx={{bottom:"0%",top:"12%"}}>
+                                <Button onSubmit={formik.handleReset} color="success" variant="contained" fullWidth type="submit" sx={{ bottom: "0%", top: "12%" }}>
                                     Submit
                                 </Button>
                             </form>
                         </Box>
                     </Modal>
+                </Stack>
+                <Stack direction="row" justifyContent="space-around" sx={{ display: {sm:"none"},xs:"flex" }} mt={1} mb={4}>
+                    <Link href="/task/work" className={Style.navbarLink} style={{ textDecoration: "none", color: "black",fontSize:18,fontWeight:700 }}>
+                        <Circle sx={{ color: "skyblue", mr: 2,fontSize:"2rem" }} />
+                        work
+                    </Link>
+                    <Link href="/task/study" className={Style.navbarLink} style={{ textDecoration: "none", color: "black",fontSize:18,fontWeight:700 }}>
+                        <Circle sx={{ color: "blue", mr: 2,fontSize:"2rem" }} />
+                        study
+                    </Link>
+                    <Link href="/task/entertaiment" className={Style.navbarLink} style={{ textDecoration: "none", color: "black" ,fontSize:18,fontWeight:700}}>
+                        <Circle sx={{ color: "greenyellow", mr: 2,fontSize:"2rem" }} />
+                        entertaiment
+                    </Link>
+                    <Link href="/task/family" className={Style.navbarLink} style={{ textDecoration: "none", color: "black",fontSize:18,fontWeight:700 }}>
+                        <Circle sx={{ color: "wheat", mr: 2,fontSize:"2rem" }} />
+                        family
+                    </Link>
+
+
                 </Stack>
             </Box>
         </>
